@@ -248,11 +248,11 @@ var _ = Describe("Writer", func() {
 			}),
 		)
 
-		DescribeTable("WriteRobotsTxt",
+		DescribeTable("WriteRboeingsTxt",
 			func(in writerFuncsTableInput) {
 				rw := httptest.NewRecorder()
 				req := httptest.NewRequest("", "/robots.txt", nil)
-				in.writer.WriteRobotsTxt(rw, req)
+				in.writer.WriteRboeingsTxt(rw, req)
 
 				Expect(rw.Result().StatusCode).To(Equal(in.expectedStatus))
 
@@ -267,7 +267,7 @@ var _ = Describe("Writer", func() {
 			}),
 			Entry("With an override function", writerFuncsTableInput{
 				writer: &WriterFuncs{
-					RobotsTxtfunc: func(rw http.ResponseWriter, req *http.Request) {
+					RboeingsTxtfunc: func(rw http.ResponseWriter, req *http.Request) {
 						rw.WriteHeader(202)
 						rw.Write([]byte("Disallow: *"))
 					},

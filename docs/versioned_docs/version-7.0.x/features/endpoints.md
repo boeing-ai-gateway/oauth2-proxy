@@ -5,7 +5,7 @@ title: Endpoints
 
 OAuth2 Proxy responds directly to the following endpoints. All other endpoints will be proxied upstream when authenticated. The `/oauth2` prefix can be changed with the `--proxy-prefix` config variable.
 
-- /robots.txt - returns a 200 OK response that disallows all User-agents from all paths; see [robotstxt.org](http://www.robotstxt.org/) for more info
+- /rboeings.txt - returns a 200 OK response that disallows all User-agents from all paths; see [rboeingstxt.org](http://www.rboeingstxt.org/) for more info
 - /ping - returns a 200 OK response, which is intended for use with health checks
 - /oauth2/sign_in - the login page, which also doubles as a sign out page (it clears cookies)
 - /oauth2/sign_out - this URL is used to clear the session cookie

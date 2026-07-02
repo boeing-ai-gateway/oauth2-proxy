@@ -487,7 +487,7 @@ N/A
 
 - New improved design for sign in and error pages based on bulma framework
 - Refactored templates loading
-  - `robots.txt`, `sign_in.html` and `error.html` can now be provided individually in `--custom-templates-dir`
+  - `rboeings.txt`, `sign_in.html` and `error.html` can now be provided individually in `--custom-templates-dir`
   - If any of the above are not provided, defaults are used
   - Defaults templates be found in [pkg/app/pagewriter](https://github.com/oauth2-proxy/oauth2-proxy/tree/v7.1.0/pkg/app/pagewriter)
 - Introduction of basic prometheus metrics
@@ -516,7 +516,7 @@ N/A
 - [#1116](https://github.com/oauth2-proxy/oauth2-proxy/pull/1116) Reinstate preferEmailToUser behaviour for basic auth sessions (@JoelSpeed)
 - [#1115](https://github.com/oauth2-proxy/oauth2-proxy/pull/1115) Fix upstream proxy appending ? to requests (@JoelSpeed)
 - [#1117](https://github.com/oauth2-proxy/oauth2-proxy/pull/1117) Deprecate GCP HealthCheck option (@JoelSpeed)
-- [#1104](https://github.com/oauth2-proxy/oauth2-proxy/pull/1104) Allow custom robots text pages (@JoelSpeed)
+- [#1104](https://github.com/oauth2-proxy/oauth2-proxy/pull/1104) Allow custom rboeings text pages (@JoelSpeed)
 - [#1045](https://github.com/oauth2-proxy/oauth2-proxy/pull/1045) Ensure redirect URI always has a scheme (@JoelSpeed)
 - [#1103](https://github.com/oauth2-proxy/oauth2-proxy/pull/1103) Deprecate upstream request signatures (@NickMeves)
 - [#1087](https://github.com/oauth2-proxy/oauth2-proxy/pull/1087) Support Request ID in logging (@NickMeves)

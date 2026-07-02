@@ -42,7 +42,7 @@ func init() {
 	logger.SetFlags(logger.Lshortfile)
 }
 
-func TestRobotsTxt(t *testing.T) {
+func TestRboeingsTxt(t *testing.T) {
 	opts := baseTestOptions()
 	err := validation.Validate(opts)
 	assert.NoError(t, err)

@@ -16,7 +16,7 @@ import (
 
 var _ = Describe("Static Pages", func() {
 	var customDir string
-	const customRobots = "User-agent: *\nAllow: /\n"
+	const customRboeings = "User-agent: *\nAllow: /\n"
 	var errorPage *errorPageWriter
 	var request *http.Request
 
@@ -30,8 +30,8 @@ var _ = Describe("Static Pages", func() {
 		customDir, err = os.MkdirTemp("", "oauth2-proxy-static-pages-test")
 		Expect(err).ToNot(HaveOccurred())
 
-		robotsTxtFile := filepath.Join(customDir, robotsTxtName)
-		Expect(os.WriteFile(robotsTxtFile, []byte(customRobots), 0400)).To(Succeed())
+		rboeingsTxtFile := filepath.Join(customDir, rboeingsTxtName)
+		Expect(os.WriteFile(rboeingsTxtFile, []byte(customRboeings), 0400)).To(Succeed())
 
 		request = httptest.NewRequest("", "http://127.0.0.1/", nil)
 		request = middlewareapi.AddRequestScope(request, &middlewareapi.RequestScope{
@@ -53,14 +53,14 @@ var _ = Describe("Static Pages", func() {
 				Expect(err).ToNot(HaveOccurred())
 			})
 
-			Context("WriterRobotsTxt", func() {
-				It("Should write the custom robots txt", func() {
+			Context("WriterRboeingsTxt", func() {
+				It("Should write the custom rboeings txt", func() {
 					recorder := httptest.NewRecorder()
-					pageWriter.WriteRobotsTxt(recorder, request)
+					pageWriter.WriteRboeingsTxt(recorder, request)
 
 					body, err := io.ReadAll(recorder.Result().Body)
 					Expect(err).ToNot(HaveOccurred())
-					Expect(string(body)).To(Equal(customRobots))
+					Expect(string(body)).To(Equal(customRboeings))
 
 					Expect(recorder.Result().StatusCode).To(Equal(http.StatusOK))
 				})
@@ -76,14 +76,14 @@ var _ = Describe("Static Pages", func() {
 				Expect(err).ToNot(HaveOccurred())
 			})
 
-			Context("WriterRobotsTxt", func() {
-				It("Should write the custom robots txt", func() {
+			Context("WriterRboeingsTxt", func() {
+				It("Should write the custom rboeings txt", func() {
 					recorder := httptest.NewRecorder()
-					pageWriter.WriteRobotsTxt(recorder, request)
+					pageWriter.WriteRboeingsTxt(recorder, request)
 
 					body, err := io.ReadAll(recorder.Result().Body)
 					Expect(err).ToNot(HaveOccurred())
-					Expect(string(body)).To(Equal(string(defaultRobotsTxt)))
+					Expect(string(body)).To(Equal(string(defaultRboeingsTxt)))
 
 					Expect(recorder.Result().StatusCode).To(Equal(http.StatusOK))
 				})
@@ -92,7 +92,7 @@ var _ = Describe("Static Pages", func() {
 					recorder := &testBadResponseWriter{
 						ResponseRecorder: httptest.NewRecorder(),
 					}
-					pageWriter.WriteRobotsTxt(recorder, request)
+					pageWriter.WriteRboeingsTxt(recorder, request)
 
 					body, err := io.ReadAll(recorder.Result().Body)
 					Expect(err).ToNot(HaveOccurred())
@@ -106,24 +106,24 @@ var _ = Describe("Static Pages", func() {
 
 	Context("loadStaticPages", func() {
 		Context("With custom content", func() {
-			Context("And a custom robots txt", func() {
+			Context("And a custom rboeings txt", func() {
 				It("Loads the custom content", func() {
 					pages, err := loadStaticPages(customDir)
 					Expect(err).ToNot(HaveOccurred())
 					Expect(pages.pages).To(HaveLen(1))
-					Expect(pages.getPage(robotsTxtName)).To(BeEquivalentTo(customRobots))
+					Expect(pages.getPage(rboeingsTxtName)).To(BeEquivalentTo(customRboeings))
 				})
 			})
 
-			Context("And no custom robots txt", func() {
+			Context("And no custom rboeings txt", func() {
 				It("returns the default content", func() {
-					robotsTxtFile := filepath.Join(customDir, robotsTxtName)
-					Expect(os.Remove(robotsTxtFile)).To(Succeed())
+					rboeingsTxtFile := filepath.Join(customDir, rboeingsTxtName)
+					Expect(os.Remove(rboeingsTxtFile)).To(Succeed())
 
 					pages, err := loadStaticPages(customDir)
 					Expect(err).ToNot(HaveOccurred())
 					Expect(pages.pages).To(HaveLen(1))
-					Expect(pages.getPage(robotsTxtName)).To(BeEquivalentTo(defaultRobotsTxt))
+					Expect(pages.getPage(rboeingsTxtName)).To(BeEquivalentTo(defaultRboeingsTxt))
 				})
 			})
 		})
@@ -133,7 +133,7 @@ var _ = Describe("Static Pages", func() {
 				pages, err := loadStaticPages("")
 				Expect(err).ToNot(HaveOccurred())
 				Expect(pages.pages).To(HaveLen(1))
-				Expect(pages.getPage(robotsTxtName)).To(BeEquivalentTo(defaultRobotsTxt))
+				Expect(pages.getPage(rboeingsTxtName)).To(BeEquivalentTo(defaultRboeingsTxt))
 			})
 		})
 	})

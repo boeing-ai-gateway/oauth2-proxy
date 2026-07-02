@@ -46,7 +46,7 @@ const (
 	schemeHTTPS     = "https"
 	applicationJSON = "application/json"
 
-	robotsPath        = "/robots.txt"
+	rboeingsPath        = "/robots.txt"
 	signInPath        = "/sign_in"
 	signOutPath       = "/sign_out"
 	oauthStartPath    = "/start"
@@ -313,8 +313,8 @@ func (p *OAuthProxy) buildServeMux(proxyPrefix string) {
 	// Everything served by the router must go through the preAuthChain first.
 	r.Use(p.preAuthChain.Then)
 
-	// Register the robots path writer
-	r.Path(robotsPath).HandlerFunc(p.pageWriter.WriteRobotsTxt)
+	// Register the rboeings path writer
+	r.Path(rboeingsPath).HandlerFunc(p.pageWriter.WriteRboeingsTxt)
 
 	// The authonly path should be registered separately to prevent it from getting no-cache headers.
 	// We do this to allow users to have a short cache (via nginx) of the response to reduce the

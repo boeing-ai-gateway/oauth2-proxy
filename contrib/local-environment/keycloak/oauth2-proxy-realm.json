@@ -1272,7 +1272,7 @@
   "browserSecurityHeaders": {
     "contentSecurityPolicyReportOnly": "",
     "xContentTypeOptions": "nosniff",
-    "xRobotsTag": "none",
+    "xRboeingsTag": "none",
     "xFrameOptions": "SAMEORIGIN",
     "xXSSProtection": "1; mode=block",
     "contentSecurityPolicy": "frame-src 'self'; frame-ancestors 'self'; object-src 'none';",

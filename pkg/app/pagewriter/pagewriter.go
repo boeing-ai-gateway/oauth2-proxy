@@ -13,7 +13,7 @@ type Writer interface {
 	WriteSignInPage(rw http.ResponseWriter, req *http.Request, redirectURL string, statusCode int)
 	WriteErrorPage(rw http.ResponseWriter, opts ErrorPageOpts)
 	ProxyErrorHandler(rw http.ResponseWriter, req *http.Request, proxyErr error)
-	WriteRobotsTxt(rw http.ResponseWriter, req *http.Request)
+	WriteRboeingsTxt(rw http.ResponseWriter, req *http.Request)
 }
 
 // pageWriter implements the Writer interface
@@ -111,7 +111,7 @@ type WriterFuncs struct {
 	SignInPageFunc func(rw http.ResponseWriter, req *http.Request, redirectURL string, statusCode int)
 	ErrorPageFunc  func(rw http.ResponseWriter, opts ErrorPageOpts)
 	ProxyErrorFunc func(rw http.ResponseWriter, req *http.Request, proxyErr error)
-	RobotsTxtfunc  func(rw http.ResponseWriter, req *http.Request)
+	RboeingsTxtfunc  func(rw http.ResponseWriter, req *http.Request)
 }
 
 // WriteSignInPage implements the Writer interface.
@@ -159,12 +159,12 @@ func (w *WriterFuncs) ProxyErrorHandler(rw http.ResponseWriter, req *http.Reques
 	})
 }
 
-// WriteRobotsTxt implements the Writer interface.
-// If the RobotsTxtfunc is provided, this will be used, else a default
+// WriteRboeingsTxt implements the Writer interface.
+// If the RboeingsTxtfunc is provided, this will be used, else a default
 // implementation will be used.
-func (w *WriterFuncs) WriteRobotsTxt(rw http.ResponseWriter, req *http.Request) {
-	if w.RobotsTxtfunc != nil {
-		w.RobotsTxtfunc(rw, req)
+func (w *WriterFuncs) WriteRboeingsTxt(rw http.ResponseWriter, req *http.Request) {
+	if w.RboeingsTxtfunc != nil {
+		w.RboeingsTxtfunc(rw, req)
 		return
 	}
 

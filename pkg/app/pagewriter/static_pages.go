@@ -13,11 +13,11 @@ import (
 )
 
 const (
-	robotsTxtName = "robots.txt"
+	rboeingsTxtName = "robots.txt"
 )
 
 //go:embed robots.txt
-var defaultRobotsTxt []byte
+var defaultRboeingsTxt []byte
 
 // staticPageWriter is used to write static pages.
 type staticPageWriter struct {
@@ -25,9 +25,9 @@ type staticPageWriter struct {
 	errorPageWriter *errorPageWriter
 }
 
-// WriteRobotsTxt writes the robots.txt content to the response writer.
-func (s *staticPageWriter) WriteRobotsTxt(rw http.ResponseWriter, req *http.Request) {
-	s.writePage(rw, req, robotsTxtName)
+// WriteRboeingsTxt writes the robots.txt content to the response writer.
+func (s *staticPageWriter) WriteRboeingsTxt(rw http.ResponseWriter, req *http.Request) {
+	s.writePage(rw, req, rboeingsTxtName)
 }
 
 // writePage writes the content of the page to the response writer.
@@ -65,7 +65,7 @@ func newStaticPageWriter(customDir string, errorWriter *errorPageWriter) (*stati
 func loadStaticPages(customDir string) (*pageGetter, error) {
 	pages := newPageGetter(customDir)
 
-	if err := pages.addPage(robotsTxtName, defaultRobotsTxt); err != nil {
+	if err := pages.addPage(rboeingsTxtName, defaultRboeingsTxt); err != nil {
 		return nil, fmt.Errorf("could not add robots.txt: %v", err)
 	}
 
